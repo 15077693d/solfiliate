@@ -1,12 +1,12 @@
 import React from "react";
-import MoblieNavBar from "./moblieNavBar";
+import MoblieNavBar from "./MoblieNavBar";
 import TabletNavBar from "./TabletNavBar";
-
+import { Container } from "../common";
 export default function Navbar() {
   return (
-    <header className="p-2">
-      <MoblieNavBar className="flex md:hidden" />
-      <TabletNavBar className="hidden md:flex" />
-    </header>
+    <Container>
+      <MoblieNavBar className="flex  w-full md:hidden" />
+      <TabletNavBar className="hidden w-full md:flex" />
+    </Container>
   );
 }

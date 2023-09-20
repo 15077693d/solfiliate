@@ -94,5 +94,7 @@
 }
 
 .wallet-adapter-button {
+  background-color: black !important;
+  text-wrap: nowrap;
   height: 2.25rem !important;
 }

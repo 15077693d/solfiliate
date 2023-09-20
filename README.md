@@ -1,3 +1,7 @@
+# style
+
+1. p-2 and md:px-7 for container
+
 # Create T3 App
 
 This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
