@@ -1,17 +1,5 @@
-import { BellIcon, CheckIcon } from "@radix-ui/react-icons";
-
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+import { Card } from "@/components/ui/card";
 import { cn } from "@/utils";
-import { useRouter } from "next/router";
 
 type CardProps = React.ComponentProps<typeof Card> & {
   value: string;
@@ -20,7 +8,7 @@ type CardProps = React.ComponentProps<typeof Card> & {
 
 export function TextCard({ value, title, className, ...props }: CardProps) {
   return (
-    <div className="flex flex-col items-center">
+    <div className={cn("flex flex-col items-center", className)}>
       <div>{value}</div>
       <div className=" text-gray-400">{title}</div>
     </div>

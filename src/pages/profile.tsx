@@ -1,47 +1,48 @@
-"use clients";
-import Head from "next/head";
 import Link from "next/link";
 
-import { api } from "@/utils/api";
-import { Button } from "@/components/ui/button";
-import { Layout } from "@/components/layout";
-import dynamic from "next/dynamic";
 import { Container } from "@/components/common";
+import { Layout } from "@/components/layout";
+import { AffiliateTable } from "@/components/table/AffiliateTable";
+import ColletionTabs from "@/components/tabs/ColletionTabs";
+import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ImageCard } from "@/components/card/ImageCard";
-export default function Collection() {
+export default function Profile() {
   return (
     <Layout>
-      <Container>
-        <h1>My Collections</h1>
-        <p>Create and manage your NFTs collection to share or sell</p>
-        <div className=" my-6 space-x-2">
-          <Link href={"/create"}>
-            <Button>Create a Collection</Button>
-          </Link>
-          <Link href={"/dashboard"}>
-            <Button>Income Dashboard</Button>
+      <div className="absolute left-0 right-0 ml-auto mr-auto  h-[150px] w-[90%] rounded-b-lg bg-[url('/background.webp')]"></div>
+
+      <Container className="relative z-10 mt-14">
+        <div className="flex flex-col md:mb-5 md:flex-row md:items-center md:justify-between">
+          <div>
+            <img className="mb-3 w-[100px] rounded" src={"/nft.png"} />
+
+            <h2>User Name</h2>
+            <div className="space-x-2">
+              <span>CPTQoGb...cQennQCP</span>
+              <span className="text-gray-500">Joined September 2023</span>
+            </div>
+            <p className="md:max-w-[700px]">
+              Welcome to NFT Project Name, the hub of the NFT universe. We focus
+              on promoting social celebration through digital art.
+            </p>
+          </div>
+          <Link className="w-full md:w-[200px] my-5" href={"/create"}>
+            <Button className="w-full">Create a Collection</Button>
           </Link>
         </div>
-
-        <Tabs defaultValue="Owned">
-          <TabsList className=" m-auto mb-10 grid  max-w-[400px] grid-cols-3">
-            <TabsTrigger value="Owned">Owned</TabsTrigger>
-            <TabsTrigger value="Created">Created</TabsTrigger>
-            <TabsTrigger value="Affiliated">Affiliated</TabsTrigger>
+        <Tabs defaultValue="Collections">
+          <TabsList className="m-auto mb-10 grid  max-w-[400px] grid-cols-2">
+            <TabsTrigger value="Collections">Collections</TabsTrigger>
+            <TabsTrigger className="px-5" value="Affiliates">
+              Affiliate Incomes
+            </TabsTrigger>
           </TabsList>
-          <TabsContent value="Owned">
-            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-              <ImageCard title1="collection1" title2="9 items" title3="" />
-              <ImageCard title1="collection1" title2="9 items" title3="" />
-              <ImageCard title1="collection1" title2="9 items" title3="" />
-              <ImageCard title1="collection1" title2="9 items" title3="" />
-              <ImageCard title1="collection1" title2="9 items" title3="" />
-              <ImageCard title1="collection1" title2="9 items" title3="" />
-            </div>
+          <TabsContent value="Collections">
+            <ColletionTabs />
           </TabsContent>
-          <TabsContent value="Created"></TabsContent>
-          <TabsContent value="Affiliated"></TabsContent>
+          <TabsContent value="Affiliates">
+            <AffiliateTable />
+          </TabsContent>
         </Tabs>
       </Container>
     </Layout>
