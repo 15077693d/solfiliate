@@ -33,7 +33,7 @@ export default function MoblieNavBar({ className }: IProps) {
       </div>
       <div className="space-x-2">
         {publicKey && (
-          <Link href={"/collection"}>
+          <Link href={"/profile"}>
             <Button>
               <UserCircleIcon className="w-4" />
             </Button>

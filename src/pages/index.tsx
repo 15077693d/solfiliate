@@ -4,25 +4,9 @@ import Link from "next/link";
 import { api } from "@/utils/api";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout";
-import dynamic from "next/dynamic";
 import { Container } from "@/components/common";
 import { CollectionTable } from "@/components/table/CollectionTable";
-import { Payment } from "@/components/table/CollectionTable/colums";
-
 export default function Home() {
-  function getData() {
-    // Fetch data from your API here.
-    return [
-      {
-        id: "728ed52f",
-        amount: 100,
-        status: "pending",
-        email: "m@example.com",
-      },
-      // ...
-    ];
-  }
-
   return (
     <Layout>
       <Container className="flex flex-col-reverse items-center md:flex-row md:justify-around">

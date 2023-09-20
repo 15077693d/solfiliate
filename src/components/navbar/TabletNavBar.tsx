@@ -53,7 +53,7 @@ export default function TabletNavBar({ className }: IProps) {
         />
         <WalletMultiButtonDynamic className="" />
         {publicKey && (
-          <Link href={"/collection"}>
+          <Link href={"/profile"}>
             <Button>
               <UserCircleIcon className="w-5" />
             </Button>

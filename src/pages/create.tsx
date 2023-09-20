@@ -13,7 +13,7 @@ export default function Create() {
   return (
     <Layout>
       <Container>
-        <Link className="flex items-center space-x-2" href={"/collection"}>
+        <Link className="flex items-center space-x-2" href={"/profile"}>
           <ArrowLeftIcon className="mr-2" />
           My Collections
         </Link>

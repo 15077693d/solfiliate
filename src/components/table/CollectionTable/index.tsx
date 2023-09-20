@@ -39,12 +39,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useRouter } from "next/router";
 
 const data: Collection[] = [
   {
     id: "m5gr84i9",
     imgSrc: "/nft.png",
-    volume: "20USD",
+    totalSales: "20USD",
     affCut: "20%",
     affCounts: "10",
     affRevenue: "10USD",
@@ -52,7 +53,7 @@ const data: Collection[] = [
   {
     id: "m5gr84i9",
     imgSrc: "/nft.png",
-    volume: "20USD",
+    totalSales: "20USD",
     affCut: "20%",
     affCounts: "10",
     affRevenue: "10USD",
@@ -60,7 +61,7 @@ const data: Collection[] = [
   {
     id: "m5gr84i9",
     imgSrc: "/nft.png",
-    volume: "20USD",
+    totalSales: "20USD",
     affCut: "20%",
     affCounts: "10",
     affRevenue: "10USD",
@@ -70,7 +71,7 @@ const data: Collection[] = [
 export type Collection = {
   id: string;
   imgSrc: string;
-  volume: string;
+  totalSales: string;
   affCut: string;
   affCounts: string;
   affRevenue: string;
@@ -90,7 +91,7 @@ export const columns: ColumnDef<Collection>[] = [
     ),
   },
   {
-    accessorKey: "volume",
+    accessorKey: "totalSales",
     header: ({ column }) => {
       return (
         <Button
@@ -98,13 +99,13 @@ export const columns: ColumnDef<Collection>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Volume
+          Total Sales
           <CaretSortIcon className="ml-2 h-4 w-4" />
         </Button>
       );
     },
     cell: ({ row }) => (
-      <div className="lowercase">{row.getValue("volume")}</div>
+      <div className="lowercase">{row.getValue("totalSales")}</div>
     ),
   },
   {
@@ -149,7 +150,7 @@ export const columns: ColumnDef<Collection>[] = [
       return (
         <Button
           className="pl-0"
-          variant=" ghost"
+          variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Aff Revence
@@ -171,7 +172,7 @@ export function CollectionTable() {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
   const [rowSelection, setRowSelection] = React.useState({});
-
+  const router = useRouter();
   const table = useReactTable({
     data,
     columns,
@@ -240,6 +241,8 @@ export function CollectionTable() {
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
+                  className=" cursor-pointer"
+                  onClick={() => router.push("/collection")}
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
                 >

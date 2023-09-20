@@ -8,38 +8,44 @@ import { Layout } from "@/components/layout";
 import dynamic from "next/dynamic";
 import { Container } from "@/components/common";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CollectionCard } from "@/components/card/CollectionCard";
+import { ImageCard } from "@/components/card/ImageCard";
+import { TextCard } from "@/components/card/TextCard";
+import { ReferralLinkDialog } from "@/components/dialog/ReferralLinkDialog";
 export default function Collection() {
   return (
     <Layout>
-      <Container>
-        <h1>My Collections</h1>
-        <p>Create and manage your NFTs collection to share or sell</p>
-        <div className=" space-x-2">
-          <Link href={"/create"}>
-            <Button>Create a Collection</Button>
-          </Link>
-          <Link href={"/dashboard"}>
-            <Button>Income Dashboard</Button>
-          </Link>
+      <div className="absolute left-0 right-0 ml-auto mr-auto  h-[150px] w-[90%] rounded-br-lg bg-[url('/background.webp')]"></div>
+      <Container className="relative z-10 mt-14">
+        <div className="flex flex-col md:mb-5 md:flex-row md:items-center md:justify-around">
+          <div>
+            <img className="mb-3 w-[100px] rounded" src={"/nft.png"} />
+
+            <h2>NFT Project Name</h2>
+            <span>Created by User Name</span>
+            <p className="md:max-w-[700px]">
+              Welcome to NFT Project Name, the hub of the NFT universe. We focus
+              on promoting social celebration through digital art.
+            </p>
+          </div>
+          <ReferralLinkDialog />
         </div>
 
-        <Tabs defaultValue="Owned">
-          <TabsList className="grid  grid-cols-3">
-            <TabsTrigger value="Owned">Owned</TabsTrigger>
-            <TabsTrigger value="Created">Created</TabsTrigger>
-            <TabsTrigger value="Affiliated">Affiliated</TabsTrigger>
-          </TabsList>
-          <TabsContent value="Owned">
-            <div className="grid grid-cols-2 gap-4">
-              <CollectionCard imgSrc="/nft.png" />
-              <CollectionCard imgSrc="/nft.png" />
-              <CollectionCard imgSrc="/nft.png" />
-            </div>
-          </TabsContent>
-          <TabsContent value="Created"></TabsContent>
-          <TabsContent value="Affiliated"></TabsContent>
-        </Tabs>
+        <div className="mb-10 grid grid-cols-3 md:grid-cols-6">
+          <TextCard value="9" title="Items" />
+          <TextCard value="9" title="Items" />
+          <TextCard value="9" title="Items" />
+          <TextCard value="9" title="Items" />
+          <TextCard value="9" title="Items" />
+          <TextCard value="9" title="Items" />
+        </div>
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+          <ImageCard />
+          <ImageCard />
+          <ImageCard />
+          <ImageCard />
+          <ImageCard />
+          <ImageCard />
+        </div>
       </Container>
     </Layout>
   );
